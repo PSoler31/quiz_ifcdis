@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jeu - Question pour un Champion</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="top">
+      <img src="assets/log quiz.png" alt="Logo du jeu" class="logo" />
+    </div>
+
+    <div class="middle">
+      <video id="timerVideo" class="timer-video" muted playsinline>
+        <source src="assets/bloc minuteur.webm" type="video/webm" />
+      </video>
+      <div>
+        <button class="button-tv" id="actionButton">
+          Lancer le jeu
+        </button>
+        <button id="bouton_mauvaise_reponse" style="display: none;">
+          X
+        </button>
+
+      </div>
+
+    </div>  
+
+    <div class="bottom">
+      <div id="players" class="players"></div>
+    </div>
+       
+  </div>
+
+  <div id="messageBox" class="message-box"></div>
+
+  <div class="nav_menu">
+    <button class= "quitter" id="quitter">
+      <img src="assets/fleche_retour.svg" width="35px">
+    </button>
+    <button class="reset" id="reset">
+      <img src="assets/reset.svg" width="35px">
+    </button>
+  </div>
+
+  <script src="script.js" defer></script> 
+</body>
+</html>
+
+<script>
+  const backBtn = document.getElementById('quitter');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      window.location.href = "admin.html";
+    });
+  }
+
+  const resetBtn = document.getElementById('reset');
+if (resetBtn) {
+  resetBtn.addEventListener('click', () => {
+    location.reload(); // Recharge la page comme si on l'ouvrait à nouveau
+  });
+}
+
+</script>
