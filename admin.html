@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Configuration du jeu</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div>
+      <img src="assets/log quiz.png" alt="Logo du jeu" class="logo" />
+    </div>
+
+    <h1 class="text-xl mb-4">Saisie des joueurs</h1>
+    <form id="playerForm" class="player-form">
+      <div id="playerInputs">
+        <div class="player-input">
+          <label for="player1">Joueur 1 :</label>
+          <input type="text" name="player1" id="player1" />
+        </div>
+    
+        <div class="player-input">
+          <label for="player2">Joueur 2 :</label>
+          <input type="text" name="player2" id="player2" />
+        </div>
+      </div>
+    <div>
+      <button type="button" id="addPlayer">+</button>
+      <button type="submit" id="playgame">Valider et lancer le jeu</button>
+
+    </div>
+    </form>
+    
+  </div>
+
+<script>
+  const form = document.getElementById('playerForm');
+  const playerInputs = document.getElementById('playerInputs');
+  const addBtn = document.getElementById('addPlayer');
+
+  let playerCount = 2;
+
+  addBtn.addEventListener('click', () => {
+    if (playerCount >= 6) return alert("Vous ne pouvez pas ajouter plus de 6 joueurs !");
+    playerCount++;
+
+    // Création du bloc stylé
+    const container = document.createElement('div');
+    container.classList.add('player-input');
+
+    // Création du label
+    const label = document.createElement('label');
+    label.setAttribute('for', `player${playerCount}`);
+    label.textContent = `Joueur ${playerCount} :`;
+
+    // Création du champ
+    const input = document.createElement('input');
+    input.type = "text";
+    input.name = `player${playerCount}`;
+    input.id = `player${playerCount}`;
+
+    // Ajout des éléments au conteneur
+    container.appendChild(label);
+    container.appendChild(input);
+
+    // Ajout au DOM
+    playerInputs.appendChild(container);
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const players = {};
+
+    for (let [key, value] of data.entries()) {
+      players[key] = value || key;
+    }
+
+    localStorage.setItem('players', JSON.stringify(players));
+    alert('Joueurs enregistrés ! Le jeu va démarrer.');
+    window.open('index.html', '_blank');
+  });
+</script>
+
+</body>
+</html>
