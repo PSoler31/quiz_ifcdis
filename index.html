@@ -24,6 +24,11 @@
           <label for="player2">Joueur 2 :</label>
           <input type="text" name="player2" id="player2" />
         </div>
+
+        <div class="player-input">
+          <label for="player2">Joueur 3 :</label>
+          <input type="text" name="player3" id="player3" />
+        </div>
       </div>
     <div>
       <button type="button" id="addPlayer">+</button>
@@ -39,10 +44,10 @@
   const playerInputs = document.getElementById('playerInputs');
   const addBtn = document.getElementById('addPlayer');
 
-  let playerCount = 2;
+  let playerCount = 3;
 
   addBtn.addEventListener('click', () => {
-    if (playerCount >= 6) return alert("Vous ne pouvez pas ajouter plus de 6 joueurs !");
+    if (playerCount >= 18) return alert("Vous ne pouvez pas ajouter plus de 18 joueurs !");
     playerCount++;
 
     // Création du bloc stylé
